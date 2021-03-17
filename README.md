@@ -1,23 +1,37 @@
-# Dracula for [GTK](https://www.gtk.org/)
+<h1 align="center">
+  <br>
+  <img src="https://draculatheme.com/static/icons/pack-1/045-dracula.svg" alt="Dracula Logo" width="100">
+  <br>
+  Dracula
+  <br>
+</h1>
 
-> A dark theme for [GTK](https://www.gtk.org/).
+<p align="center">
+  <strong><a href="https://www.gtk.org/">GTK</a> dark theme</strong>
+</p>
 
-![Screenshot](./screenshot.png)
+<p align="center">
+  <a href="#instalação">Instalação</a> •
+  <a href="#time">Time</a> •
+  <a href="#licença">Licença</a>
+</p>
 
-This theme provides support for GTK-3 and GTK-2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc. Also provides support for KDE plasma.
+<p align="center">
+  <img alt="screnshoot for GTK" src="./screenshot.png">
+</p>
 
-## Install
+Este tema oferece suporte para ambientes de desktop baseados em GTK-3 e GTK-2, como Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc.
 
-All instructions can be found at [draculatheme.com/gtk](https://draculatheme.com/gtk).
+## Instalação
 
-## Team
+Todas as instruções podem ser encontradas em [INSTALL.md](./INSTALL.md)
 
-This theme is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/dracula/gtk/graphs/contributors).
+## Time
 
-[![Eliver Lara](https://avatars0.githubusercontent.com/u/9838260?v=3&s=70)](https://github.com/EliverLara) | 
+[![Matheus Vitor](https://avatars0.githubusercontent.com/u/77175088?v=3&s=70)](https://github.com/matheuuus) | 
 --- | 
-[Eliver Lara](https://github.com/EliverLara) | 
+[Matheus Vitor](https://github.com/matheuuus) | 
 
-## License
+## Licença
 
-[GPL-3.0 License](./LICENSE)
+[GPL-3.0 License](./LICENSE.md)

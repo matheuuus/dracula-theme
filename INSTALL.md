@@ -1,12 +1,19 @@
-### [GTK](https://www.gtk.org/)
+<h1 align="center">
+  <br>
+  <img src="https://draculatheme.com/static/icons/pack-1/045-dracula.svg" alt="Dracula Logo" width="100">
+  <br>
+  Dracula
+</h1>
 
-#### Install manually
+### Instalação manual
 
-Download using the [GitHub .zip download](https://github.com/dracula/gtk/archive/master.zip) option and extract the `.zip` file to the themes directory i.e. `/usr/share/themes/` or `~/.themes/` (create it if necessary).
+```
+git clone https://github.com/matheuuus/dracula-theme.git ~/.themes/Dracula
+```
 
-#### Activating theme
+### Ativando o tema
 
-To activate the theme in Gnome, run the following commands in Terminal:
+Para ativar o tema no Gnome, execute os seguintes comandos no Terminal:
 
 ```
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
@@ -14,21 +21,4 @@ gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 
 ```
 
-or Change via distribution specific tweak tool.
-
-## Icon Theme (optional)
-
-#### Install manually
-
-Download using the [GitHub .zip download](https://github.com/dracula/gtk/files/5214870/Dracula.zip) option and extract the `.zip` file to the icons directory i.e. `/usr/share/icons/` or `~/.icons/` (create it if necessary).
-
-#### Activating icon theme
-
-To activate the theme in Gnome, run the following commands in Terminal: 
-
-```
-gsettings set org.gnome.desktop.interface icon-theme "Dracula"
-
-```
-
-or Change via distribution specific tweak tool.
+Ou pela ferramenta de ajuste específica de distribuição.

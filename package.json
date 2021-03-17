@@ -1,5 +1,5 @@
 {
-  "name": "Ant",
+  "name": "dracula",
   "version": "1.0.0",
   "description": "A flat and light theme with a modern look",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EliverLara/Ant.git"
+    "url": "https://github.com/matheuuus/dracula-theme"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/EliverLara/Ant/issues"
+    "url": "https://github.com/matheuuus/dracula-theme/issues"
   },
-  "homepage": "https://github.com/EliverLara/Ant#readme",
+  "homepage": "https://github.com/matheuuus/dracula-theme#readme",
   "dependencies": {
     "gulp": "^4.0.0",
     "gulp-exec": "^2.1.3",

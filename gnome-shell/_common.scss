@@ -3,6 +3,7 @@ $corner-radius: 2px;
 
 /* GLOBALS */
 $font-size: 10;
+$font-family: Roboto,Ubuntu, Cantarell, Sans-Serif;
 $_bubble_bg_color: $osd_bg_color;
 $_bubble_fg_color: $fg_color;
 $_bubble_borders_color: $fg_color;
@@ -10,6 +11,7 @@ $_bubble_transparent: transparentize($osd_bg_color, 0.17);
 $topbar_bg_color: transparentize($dracula, 0.05);
 
 stage {
+  font-family: $font-family;
   @include fontsize($font-size);
   color: $fg_color;
 }
@@ -243,10 +245,10 @@ StScrollBar {
   border: none;
   & .modal-dialog-linked-button:last-child {
     background-color: $red;
-    color: #fff;
+    color: white;
     &:hover, &:focus {
       background: darken($error_color, 3%);
-      color: #fff;
+      color: white;
     }
   }
 }
@@ -811,6 +813,7 @@ StScrollBar {
     -minimum-hpadding: 6px;
     font-weight: bold;
     color: $topbar_color;
+    text-shadow: none;
     transition-duration: 100ms;
 
     .app-menu-icon {
@@ -833,10 +836,9 @@ StScrollBar {
     }
 
     &:active, &:overview, &:focus, &:checked {
-      // Trick due to St limitations. It needs a background to draw
-      // a box-shadow
-      box-shadow: none;
-      @include gradient();
+      // Trick due to St limitations. It needs a background to draw a box-shadow
+      box-shadow: inset 0 -2px 0 0 $purple;
+      background: lighten($topbar_bg_color, 5%);
       color: $selected_fg_color;
       transition-duration: 200ms;
 
@@ -854,7 +856,6 @@ StScrollBar {
     // Remove default bottom border
     &.clock-display {
       &:active, &:overview, &:focus, &:checked {
-        box-shadow: none;
         .clock {
           box-shadow: none;
         }
@@ -1320,6 +1321,7 @@ StScrollBar {
 //close buttons
 
 .window-close {
+  -shell-close-overlap: 16px;
   background-color: transparent;
   background-image: url("assets/close-window.svg");
   background-size: 32px;
@@ -1328,11 +1330,8 @@ StScrollBar {
   color: transparent;
   height: 32px;
   width: 32px;
+  &:rtl { -st-background-image-shadow: 2px 2px 6px rgba(0,0,0,0.5); }
 }
-  .window-close {
-    -shell-close-overlap: 16px;
-    &:rtl { -st-background-image-shadow: 2px 2px 6px rgba(0,0,0,0.5); }
-  }
 
 /* NETWORK DIALOGS */
 
@@ -1390,24 +1389,26 @@ StScrollBar {
     -horizontal-spacing: 16px;
     -vertical-spacing: 16px;
     padding: 0 16px 16px;
-
     &.external-monitor { padding: 16px; }
   }
 
   .window-clone-border {
-    border: 1px solid transparentize(rgba(255, 255, 255, 0.3),.7);
-    border-radius: 0px;
+    border: 1px solid transparentize($purple,.7);
+    border-radius: 5px;
     // For window decorations with round corners we can't match
     // the exact shape when the window is scaled. So apply a shadow
     // to fix that case
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 0 2px $purple;
   }
   .window-caption {
-    spacing: 20px;
+    background-color: $osd_bg_color;
     color: $topbar_color;
-    background-color: transparentize($osd_bg_color,.3);
-    border-radius: 2px;
+    border: 2px solid $purple;
+    border-radius: 5px;
     padding: 4px 8px;
+    
+    spacing: 20px;
+    text-align: center;
   }
 
   //search entry
@@ -1475,11 +1476,11 @@ StScrollBar {
   #dash {
     font-size: 9pt;
     color: $topbar_color;
-    background-color: $topbar_bg_color;
+    background-color: lighten($topbar_bg_color, 5%);
     padding: 6px 0;
     border: 1px solid $borders_color;
     border-left: 0px;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 10px 10px 0px;
 
     &:rtl {
       border-radius: 9px 0 0 9px;
@@ -1535,6 +1536,7 @@ StScrollBar {
   .app-view-control { //favorties | all toggle button
     padding: 4px 32px;
     &:checked { @include button(active); }
+    &:checked, &:hover{ color: $topbar_color }
     &:first-child {
       border-right-width: 0;
       border-radius: 3px 0 0 3px;
@@ -1560,7 +1562,7 @@ StScrollBar {
   .grid-search-result {
     
     border: none;
-    & .overview-icon {
+    .overview-icon {
       @extend %icon_tile;
     }
     &:active .overview-icon,
@@ -1572,22 +1574,43 @@ StScrollBar {
     &:hover .overview-icon,
     &:focus .overview-icon,
     &:selected .overview-icon {
-      background-color: transparentize($bg_color,.5);
-      transition-duration: 0ms;
+      background-color: transparentize($bg_color,.7);
       border-image: none;
       background-image: none;
+      transition-duration: .5s;
     }
 
   }
-
-  .app-well-app-running-dot { //running apps indicator
-    width: 4px; height: 4px;
-    background-color: $selected_bg_color;
-    border-radius: 10px !important;
-    box-shadow: 0px 0px 5px 4px transparentize($purple, 0.2);
-    margin-bottom: 0px;
+  .app-well-app{
+    &:hover .app-well-app-running-dot,
+    &:focus .app-well-app-running-dot,
+    &:selected .app-well-app-running-dot {
+      background-color: darken($topbar_color, 7.5);
+    }
+    .app-well-app-running-dot { //running apps indicator
+      width: 4px; height: 4px;
+      background-color: $purple;
+      border-radius: 10px !important;
+      box-shadow: 0px 0px 10px 8px transparentize(darken($purple, 5), .2);
+      margin-bottom: 0px;
+    }
   }
-
+  .show-apps:active .overview-icon,
+  .show-apps:checked .overview-icon{
+    background-color: transparentize($bg_color,.7);
+    box-shadow: none;
+  }
+  .icon-grid .app-well-app,
+  .icon-grid .app-well-app.app-folder,
+  .icon-grid .grid-search-result{
+    &:hover .overview-icon,
+    &:focus .overview-icon,
+    &:selected .overview-icon{
+      background-color: transparentize(#292a2c, .5);
+      border-radius: 5px;
+      transition-duration: .5s;
+    }
+  }
   %icon_tile {
     color: $selected_fg_color;
     border-radius: 2px;
@@ -1604,12 +1627,6 @@ StScrollBar {
   .show-apps .show-apps-icon {
     color: $topbar_color;
   }
-  .show-apps:checked .show-apps-icon,
-  .show-apps:focus .show-apps-icon {
-    color: $fg_color;
-    transition-duration: 100ms;
-  }
-
 
   // Collections
   .app-folder-popup { //expanded collection
@@ -1648,7 +1665,7 @@ StScrollBar {
     }
     &:checked .page-indicator-icon{ 
       background-image: none;
-      background-color: #FFFFFF;
+      background-color: white;
       transition-duration: 0.3s; 
       transition-timing-function: ease-in-out;
     }
@@ -1664,16 +1681,20 @@ StScrollBar {
 
   // Workspace pager
   .workspace-thumbnails { //container ala dash
-    @extend %overview-panel;
+    background-color: lighten($topbar_bg_color, 5%);
+    color:  $_bubble_fg_color;
     visible-width: 32px; //amount visible before hover
     spacing: 11px;
     padding: 8px;
-    border-radius: 0;
+    padding-right: 4px;
+    border: 1px solid $borders_color;
+    border-radius: 10px 0px 0px 10px;
     //border-width: 1px 0 1px 1px; //fixme: can't have non unoform borders :(
     &:rtl { border-radius: 0;}
   }
   .workspace-thumbnail-indicator {
-    border: 4px solid transparentize($selected_bg_color, .1);
+    border: 2.5px solid transparentize($purple, .25);
+    border-radius: 3px;
     box-shadow: $depth;
     padding: 0;
   }
@@ -1685,12 +1706,6 @@ StScrollBar {
     // horizontal padding to make sure scrollbars or dash don't overlap content
     padding: 0px 88px 10px 88px;
   }
-
-%overview-panel {
-  color:  $_bubble_fg_color;
-  background-color: transparent;
-  border: none;
-}
 
 %status_text {
   font-size: 2em;
@@ -2153,7 +2168,7 @@ StScrollBar {
       border: 1px solid gray;
       padding: 4px;
       border-radius: 4px;
-      &:hover { border: 1px solid #ffffff; }
+      &:hover { border: 1px solid white; }
   }
 
   #lookingGlassExtensions { padding: 4px; }
