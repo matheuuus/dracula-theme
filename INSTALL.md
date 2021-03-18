@@ -15,7 +15,6 @@ Para ativar o tema no Gnome, execute os seguintes comandos no Terminal:
 ```
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
-
 ```
 
 Ou pela ferramenta de ajuste específica de distribuição.
